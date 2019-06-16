@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clock</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <main class="wrapper"> 
+        <div class="clock">
+            <div class="clock-time">
+                {{mainController.date | date:"HH:mm:ss"}}
+            </div>
+        </div>
+    </main>
+</body>
+</html>
