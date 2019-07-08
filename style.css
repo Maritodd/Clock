@@ -1,0 +1,32 @@
+body, html {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.body {
+    background-color:#141414;
+    color: wheat;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: 3px;
+}
+
+.clock-time {
+    position: absolute;
+    font-size: 350px;
+    letter-spacing: 5px;
+    font-weight: 500;
+    text-align: center;
+    margin-left: 15%;
+}
+
+.clock-date {
+    
+    font-size: 75px;
+    letter-spacing: 5px;
+    font-weight: 400;
+}

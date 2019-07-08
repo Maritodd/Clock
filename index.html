@@ -1,19 +1,85 @@
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clock</title>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-    <script src="main.js"></script>
+    .<link href="https://fonts.googleapis.com/css?family=Open+Sans:400, 500, 600, 700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 </head>
-<body>
-    <main class="wrapper"> 
+<body class="body" id="body">
+    <div class="country">Country: <span id="country"></span></div>
+    <div class="state">State: <span id="state"></span></div>
+    <div class="city">City: <span id="city"></span></div>
+    <main class="wrapper" id="main" ng-app="app" ng-controller="MainController as mainController"> 
         <div class="clock">
             <div class="clock-time">
                 {{mainController.date | date:"HH:mm:ss"}}
             </div>
+
+            <div class="clock-date">
+                {{mainController.date | date:"EEEE dd.MM.yyyy" }}
+            </div>
         </div>
     </main>
+    <script>
+/////////////////////////////////////////////////////////////   CLOCK   ////////////////////////////////////////////////////////////////////////////////
+        
+        let app = angular.module('app', []);
+        app.controller('MainController', function($interval) {
+            let controller = this;
+            controller.date = new Date();
+            $interval(function() {
+                controller.date = new Date();
+            }, 1000);
+            $interval(function() {
+                window.location.href = window.location.href + '?rnd=' + Math.random;
+            }, 1800000);
+        })
+
+    </script>
+    <script>
+////////////////////////////////////////////////////////////   GEOPOZITION    ////////////////////////////////////////////////////////////////////////
+
+        let country = document.getElementById('country');
+        let state = document.getElementById('state');
+        let city = document.getElementById('city');
+        let postal = document.getElementById('postal');
+        let latitude = document.getElementById('latitude');
+        let longitude = document.getElementById('longitude');
+        let ip = document.getElementById('ipv4');
+                
+        function callback(data) {
+            country.innerHTML = data.country_name;
+            state.innerHTML = data.state;
+            city.innerHTML = data.city;
+            postal.innerHTML = data.postal;
+            latitude.innerHTML = data.latitude;
+            longitude.innerHTML = data.longitude;
+            ip.innerHTML = data.IPv4;
+        }
+        let script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://geoip-db.com/jsonp';
+        let h = document.getElementsByTagName('script')[0];
+        h.parentNode.insertBefore(script, h);
+
+    </script>
+    <script>
+
+        // let colors = ['black', 'gray', 'brown'];
+        // let random_color = colors[Math.floor(Math.random() * colors.length)];
+        // document.getElementById('body').style.background = random_color;
+
+    </script>
+    <script>
+
+            let colors = ['#ff0000', '#00ff00', '#0000ff'];
+            let random_color = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('body').style.color = random_color;
+    
+        </script>
 </body>
 </html>

@@ -1,14 +1,12 @@
-let clock = angular.module('clock', []);
+var request = require("request");
+var url = "https://geoip-db.com/json";
 
-clock.controller('MainController', function($interval) {
-    let controller = this;
-    controller.date = new Date();
-    $interval(function() {
-        controller.date = new Date();
-    }, 1000);
+request({
+    url: url,
+    json: true
+}, function (error, response, body) {
 
-    $interval(function() {
-        window.location.href = window.location.href + '&rnd=' + Math.random;
-    }, 1800000);
-    
-})
+    if (!error && response.statusCode === 200) {
+        console.log(body); 
+    }
+});
